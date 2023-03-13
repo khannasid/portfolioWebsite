@@ -2,11 +2,11 @@ export default[
     {
         name: "room",
         type: "glbmodel",
-        path: "/models/Finale.glb",
+        path: "/models/Finale6.glb",
     },
     {
         name: "screen",
         type: "videoTexture",
-        path: "/textures/kda.mp4",
+        path: "/textures/anime.mp4",
     }
 ]

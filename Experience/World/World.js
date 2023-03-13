@@ -3,25 +3,37 @@ import Room from "./Room";
 import Controls from "./Controls";
 import Floor from "./Floor";
 import Environment from "./Environment";
+import EventEmitter from "events";
 
-
-export default class World{
+export default class World extends EventEmitter{
     constructor(){
+        super();
         this.experience = new Experience();
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
         this.camera = this.experience.camera;
         this.resources = this.experience.resources;
+        this.theme = this.experience.theme;
 
         this.resources.on("ready", () =>{
-            this.room = new Room();
             this.environment = new Environment();
             this.floor = new Floor();
+            this.room = new Room();
             this.controls = new Controls();
+            this.emit("worldready");
         });
 
+        this.theme.on("switch", (theme)=>{
+            this.switchTheme(theme);
+        });
         // this.room = new Room();
+    }
+
+    switchTheme(theme){
+        if(this.environment){
+            this.environment.switchTheme(theme);  
+        }
     }
 
     resize(){
