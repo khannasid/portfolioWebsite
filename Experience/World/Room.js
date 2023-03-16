@@ -38,17 +38,17 @@ export default class Room{
                     groupchild.castShadow = true;
                     groupchild.receiveShadow = true;
                 });
-                // child.scale.set(0,0,0);
+                // child.scale.set(1,1,1);
                 this.roomChildren[child.name.toLowerCase()] = child;
         });
         this.actualRoom.children[0].position.z = 1.1537;
-        // this.actualRoom.children[0].scale.set(0,0,0);
+        // this.actualRoom.children[0].scale.set(1,1,1);
         this.roomChildren[this.actualRoom.children[0].name.toLowerCase()] = this.actualRoom.children[0];
 
         // console.log(this.actualRoom.children[3]);
         
         // for preloader cube
-        // this.actualRoom.children[2].scale.set(0,0,0);
+        // this.actualRoom.children[2].scale.set(1,1,1);
         // this.actualRoom.children[2].position.set(0,0,0)
         // this.actualRoom.children[2].rotation.y = Math.PI/4;
         this.roomChildren[this.actualRoom.children[2].name.toLowerCase()] = this.actualRoom.children[2];
@@ -66,12 +66,14 @@ export default class Room{
             );
             rectLight.position.set(0,1,-0.8);
             rectLight.lookAt(0,0,-0.6);
-            rectLight.scale.set(0,0,0);
+            rectLight.scale.set(1,1,1);
             this.actualRoom.add(rectLight);
             this.roomChildren['rectlight'] = rectLight;
             
+            // this.actualRoom.scale.set(2,2,2);
             this.scene.add(this.actualRoom);
             this.actualRoom.rotation.y = -Math.PI/4;
+            // this.scene.add(this.actualRoom);
             // log Roomchild
             // for(const key in this.roomChildren){
             //         if(this.roomChildren.hasOwnProperty(key)){
